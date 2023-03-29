@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem id ="Learning_app_root_menu" name ="Aimers">
+     
+      <!-- courses-->
+      <menuitem id ="Learning_app_first_level_menu" name = "Courses">
+        <menuitem id ="Learning_app_courses_action"   action="courses_views_action"></menuitem>
+        <menuitem id ="Learning_app_courses_action2"  action ="practice_test_views_action"></menuitem>
+      </menuitem> 
+    
+
+
+      <!--Jobs  -->
+      <menuitem id="Learning_app_first_level_menu1" name="Jobs">
+        <menuitem id ="Learning_app_jobs_action"  action="jobs_views_action"></menuitem>
+        <menuitem id ="Learning_app_jobs_action2"  action="applied_jobs_views_action"></menuitem>
+      </menuitem>
+
+
+      <!-- Reports -->
+      <menuitem id="Learning_app_first_level_menu2" name='Reports'>
+        <menuitem id ="Learning_app_reports_action"  action="test_scores_views_action"></menuitem>
+        <menuitem id ="Learning_app_reports_action1"  action="enrolled_courses_views_action"></menuitem>
+      </menuitem>
+
+    </menuitem>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <record id ='test_scores_views_action' model = 'ir.actions.act_window'>
+        <field name="name">Test Scores</field>
+        <field name ="res_model">test.scores</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+
+    <record id ='enrolled_courses_views_action' model = 'ir.actions.act_window'>
+        <field name="name">Enrolled courses</field>
+        <field name ="res_model">enrolled.courses</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>

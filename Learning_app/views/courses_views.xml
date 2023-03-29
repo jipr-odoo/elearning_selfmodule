@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Offered courses -->
+    <record id='courses_views_action' model = 'ir.actions.act_window'>
+        <field name ="name">Offered Courses</field>
+        <field name ="res_model">courses</field>
+        <field name = "view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+
+
+
+    
+    <!-- practice test -->
+    <record id='practice_test_views_action' model='ir.actions.act_window'>
+        <field name ="name">Practice Test</field>
+        <field name="res_model">practice.test</field>
+        <field name ="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+</odoo>

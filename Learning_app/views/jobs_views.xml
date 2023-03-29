@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <record id ='jobs_views_action' model = 'ir.actions.act_window'>
+        <field name="name">DashBoard</field>
+        <field name ="res_model">jobs</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+
+    
+    <record id ='applied_jobs_views_action' model = 'ir.actions.act_window'>
+        <field name="name">Jobs Applied</field>
+        <field name ="res_model">applied.jobs</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>
