@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ratings.tag" id="ratings_model_demo">
+            <field name="name">Excellent</field>
+            <field name="color">1</field>
+        </record>
+        <record model="ratings.tag" id="ratings_model_demo1">
+            <field name="name">Good</field>
+            <field name="color">2</field>
+
+        </record>
+        <record model="ratings.tag" id="ratings_model_demo2">
+            <field name="name">Average</field>
+            <field name="color">3</field>
+
+        </record>
+        <record model="ratings.tag" id="ratings_model_demo3">
+            <field name="name">Poor</field>
+            <field name="color">4</field>
+
+        </record>
+    </data>
+</odoo>

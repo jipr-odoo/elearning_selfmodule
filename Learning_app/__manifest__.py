@@ -10,10 +10,11 @@
         'views/courses_views.xml',
         'views/jobs_views.xml',
         'views/reports_views.xml',
-        'views/courses_menus.xml'  
+        'views/ratings_views.xml',
+        'views/courses_menus.xml', 
     ],
     'demo': [
-        
+        'demo/demo_data.xml'
     ],
     'installable' : True,
     'application' : True,

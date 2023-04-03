@@ -1,5 +1,80 @@
 <?xml version="1.0"?>
 <odoo>
+    <!-- student register -->
+    <record id='std_register_views_action' model = 'ir.actions.act_window'>
+        <field name ="name">Student Register</field>
+        <field name ="res_model">student</field>
+        <field name = "view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+        <field name="context">{'search_default_state': True}</field>
+
+    </record>
+    
+    <!-- Tree view -->
+    <record id="st_tree_view" model="ir.ui.view">
+        <field name="name">st Tree View</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="st_name"/>
+                <field name="mobile_no"/>
+                <field name="course_type" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="priority" widget="priority" />
+                <!-- <field name="state" attrs="{'invisible':'True'}"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="st_form_view" model="ir.ui.view">
+        <field name="name">St Form View</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                    <header>
+                        <button name="paid" type="object" string="Pay" attrs="{'invisible': [('state', 'in', ['paid'] )]}"/>
+                        <button name="free" type="object" string="Free" confirm="You will not get Access To Practice Test !!" attrs="{'invisible': [('state', 'in', ['paid'] )]}"/>
+                        <field name ="state" widget="statusbar" options="{'clickable':'1'}"></field>
+                    </header>
+                <sheet>
+                    <group>
+                        <field name="id"/>
+                        <field name="st_name"/>
+                        <field name="mobile_no"/>
+                        <field name="course_type" widget="many2many_tags"/>
+                        <field name="priority" confirm="Got It" />
+                        <field name='practice_test_no' attrs="{'invisible':[('state','in','ntpaid')]}"/>
+                        <!-- <field name="enr_count"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search view -->
+    <record id="student_view_search" model="ir.ui.view">
+        <field name="name">student.search.view</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <search string="Student">
+                <field name="st_name"/>
+                <filter string="Available" name="state"
+                    domain="[('state','=','paid')]" />
+                <group expand='1' string="Group By">
+                    <filter string="students" name="course_type" context="{'group_by':'course_type'}" />
+                </group>
+                </search>
+        </field>
+
+    </record>
+
+
+
     <!-- Offered courses -->
     <record id='courses_views_action' model = 'ir.actions.act_window'>
         <field name ="name">Offered Courses</field>
@@ -11,7 +86,46 @@
             </p>
         </field>
     </record>
+    
+    <!-- course Tree views  -->
+    <record id="course_tree_view2" model="ir.ui.view">
+        <field name="name">Course  Tree View</field>
+        <field name="model">courses</field>
+        <field name="arch" type="xml">
+            <tree>
+               <field name="course_name"/>
+               <field name="course_duration"/>
+               <field name="course_fees"/>
+               <field name="course_type"/>
+               <field name="courses_test"/>
+               <field name="course_feedback" widget="priority" options="{'clickable':'0'}"/>
+            </tree>
+        </field>
+    </record>
 
+   <!-- Form view  -->
+    <record id="course_form_view" model="ir.ui.view">
+        <field name="name">CourseForm View</field>
+        <field name="model">courses</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                <sheet>
+                    <notebook>
+                        <page string="course details">
+                            <group>
+                                <field name="course_name"/>
+                                <field name="course_duration"/>
+                                <field name="course_fees"/>
+                                <field name="course_type"/>
+                                <field name="course_instructors" widget="many2many_tags"/>
+                                <field name="color" widget="color_picker"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
 
     
@@ -26,4 +140,38 @@
             </p>
         </field>
     </record>
+    
+    <!-- Tree view -->
+    <record id="practice_test_tree_view" model="ir.ui.view">
+        <field name="name">Test Tree View</field>
+        <field name="model">practice.test</field>
+        <field name="arch" type="xml">
+            <tree>
+               <field name="test_names"/>
+               <field name="sel_course"/>
+            </tree>
+        </field>
+    </record>
+
+     <!-- Form view  -->
+     <record id="practice_test_form_view" model="ir.ui.view">
+        <field name="name">Test Form View</field>
+        <field name="model">practice.test</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                <sheet>
+                    <notebook>
+                        <page string="Test">
+                            <group>
+                                <field name="test_names"/>
+                                <field name="sel_course"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
 </odoo>

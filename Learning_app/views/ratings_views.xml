@@ -1,0 +1,8 @@
+<?xml version='1.0'?>
+<odoo>
+    <record id="ratings_view_record" model="ir.actions.act_window">
+        <field name="name">ratings view</field>
+        <field name ="res_model">ratings.tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

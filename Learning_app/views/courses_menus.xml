@@ -1,7 +1,13 @@
 <?xml version="1.0"?>
 <odoo>
     <menuitem id ="Learning_app_root_menu" name ="Aimers">
-     
+      
+      <!-- student register -->
+      <menuitem id ="Learning_app_first_level_menuu" name = "Std_Register" sequence='1'>
+        <menuitem id ="student_register_action"   action="std_register_views_action"></menuitem>
+      </menuitem> 
+
+
       <!-- courses-->
       <menuitem id ="Learning_app_first_level_menu" name = "Courses">
         <menuitem id ="Learning_app_courses_action"   action="courses_views_action"></menuitem>
