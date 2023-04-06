@@ -21,7 +21,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="id"/>
-                <field name="st_name"/>
+                <field name="name"/>
                 <field name="mobile_no"/>
                 <field name="course_type" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="priority" widget="priority" />
@@ -43,13 +43,18 @@
                     </header>
                 <sheet>
                     <group>
-                        <field name="id"/>
-                        <field name="st_name"/>
-                        <field name="mobile_no"/>
-                        <field name="course_type" widget="many2many_tags"/>
-                        <field name="priority" confirm="Got It" />
-                        <field name='practice_test_no' attrs="{'invisible':[('state','in','ntpaid')]}"/>
-                        <!-- <field name="enr_count"/> -->
+                        <group>
+                            <field name="id"/>
+                            <field name="name"/>
+                            <field name="mobile_no"/>
+                        </group>
+
+                        <group>
+                            <field name="course_type" widget="many2many_tags"/>
+                            <field name="priority" attrs="{'confirm':[('priority','not in','no')]}" />
+                            <field name='practice_test_no' attrs="{'invisible':[('state','in','ntpaid')]}"/>
+                            <!-- <field name="enr_count"/> -->
+                        </group>
                     </group>
                 </sheet>
             </form>
@@ -62,7 +67,7 @@
         <field name="model">student</field>
         <field name="arch" type="xml">
             <search string="Student">
-                <field name="st_name"/>
+                <field name="name"/>
                 <filter string="Available" name="state"
                     domain="[('state','=','paid')]" />
                 <group expand='1' string="Group By">
@@ -93,7 +98,7 @@
         <field name="model">courses</field>
         <field name="arch" type="xml">
             <tree>
-               <field name="course_name"/>
+               <field name="name"/>
                <field name="course_duration"/>
                <field name="course_fees"/>
                <field name="course_type"/>
@@ -113,7 +118,7 @@
                     <notebook>
                         <page string="course details">
                             <group>
-                                <field name="course_name"/>
+                                <field name="name"/>
                                 <field name="course_duration"/>
                                 <field name="course_fees"/>
                                 <field name="course_type"/>
@@ -146,8 +151,8 @@
         <field name="name">Test Tree View</field>
         <field name="model">practice.test</field>
         <field name="arch" type="xml">
-            <tree>
-               <field name="test_names"/>
+            <tree editable="bottom">
+               <field name="name"/>
                <field name="sel_course"/>
             </tree>
         </field>
@@ -163,7 +168,7 @@
                     <notebook>
                         <page string="Test">
                             <group>
-                                <field name="test_names"/>
+                                <field name="name"/>
                                 <field name="sel_course"/>
                             </group>
                         </page>
