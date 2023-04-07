@@ -4,7 +4,7 @@
     <record id='std_register_views_action' model = 'ir.actions.act_window'>
         <field name ="name">Student Register</field>
         <field name ="res_model">student</field>
-        <field name = "view_mode">tree,form</field>
+        <field name = "view_mode">kanban,tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No Records Found
@@ -14,6 +14,47 @@
 
     </record>
     
+    <!-- Kanban View -->
+
+    <record id="students_view_kanban" model="ir.ui.view">
+        <field name="name">student.kanban</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="course_type" records_draggable="False">
+                <field name= "state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div  class="oe_kanban_global_click" >
+                            <strong>
+                                <field name="name" />
+                            </strong> 
+                            <br></br>
+                            <strong>
+                               <label for="id">Student Id:</label> 
+                               <field name="id"/>
+                            </strong>
+                            <div class="text-muted">
+                                Courses : <field name="course_type" widget ="many2many_tags" options="{'color_field': 'color'}"/>
+                            </div>
+                            <div class="text-muted">
+                                Mobile No: <field name="mobile_no" />
+                            </div>
+                            <div t-if="record.state.raw_value == 'paid'" class="text-muted">
+                                Practice Availables <field name="practice_test_no" />
+                            </div>
+                            <div >
+                                <field name="priority" widget="priority"/>
+                            </div>
+                            <div>
+                                <progressbar field="state" colors='{"new": "warning", "enr": "warning", "paid": "success", "ntpaid": "muted"}'/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
     <!-- Tree view -->
     <record id="st_tree_view" model="ir.ui.view">
         <field name="name">st Tree View</field>
@@ -51,10 +92,10 @@
 
                         <group>
                             <field name="course_type" widget="many2many_tags"/>
-                            <field name="priority" attrs="{'confirm':[('priority','not in','no')]}" />
+                            <field name="priority" confirm="Did you complete or view the course !!!" />
                             <field name='practice_test_no' attrs="{'invisible':[('state','in','ntpaid')]}"/>
                             <!-- <field name="enr_count"/> -->
-                        </group>
+                        </group> 
                     </group>
                 </sheet>
             </form>
@@ -84,7 +125,7 @@
     <record id='courses_views_action' model = 'ir.actions.act_window'>
         <field name ="name">Offered Courses</field>
         <field name ="res_model">courses</field>
-        <field name = "view_mode">tree,form</field>
+        <field name = "view_mode">kanban,tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No Records Found
@@ -92,6 +133,52 @@
         </field>
     </record>
     
+
+ <!-- Kanban View -->
+
+ <record id="courses_view_kanban" model="ir.ui.view">
+    <field name="name">courses.kanban</field>
+    <field name="model">courses</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="course_type">
+          
+            <templates>
+                <t t-name="kanban-box">
+                    <div  class="oe_kanban_global_click" >
+                        <strong>
+                            <field name="name" />
+                        </strong> 
+                        <br></br>
+                        <strong>
+                           <label for="id">Course Id:</label> 
+                           <field name="id"/>
+                        </strong>
+                        <div class="text-muted">
+                            course_fees : <field name="course_fees"/>
+                        </div>
+
+                        <div class="text-muted">
+                            Tutors: <field name="course_instructors" widget="many2many_tags"/>
+                        </div>
+                        <div>
+                           No of Test Availables <field name="courses_test" />
+                        </div>
+                        <div>
+                            Course_duration: <field name="course_duration"/>
+                        </div>
+                        <div >
+                            <field name="course_feedback" widget="priority"/>
+                        </div>
+                        <!-- <div>
+                            <progressbar field="course_type" colors='{"new": "warning", "enr": "warning", "paid": "success", "ntpaid": "muted"}'/>
+                        </div> -->
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
     <!-- course Tree views  -->
     <record id="course_tree_view2" model="ir.ui.view">
         <field name="name">Course  Tree View</field>
@@ -115,18 +202,14 @@
         <field name="arch" type="xml">
             <form string="form_view">
                 <sheet>
-                    <notebook>
-                        <page string="course details">
-                            <group>
-                                <field name="name"/>
-                                <field name="course_duration"/>
-                                <field name="course_fees"/>
-                                <field name="course_type"/>
-                                <field name="course_instructors" widget="many2many_tags"/>
-                                <field name="color" widget="color_picker"/>
-                            </group>
-                        </page>
-                    </notebook>
+                    <group>
+                        <field name="name"/>
+                        <field name="course_duration"/>
+                        <field name="course_fees"/>
+                        <field name="course_type"/>
+                        <field name="course_instructors" widget="many2many_tags"/>
+                        <field name="color" widget="color_picker"/>
+                    </group> 
                 </sheet>
             </form>
         </field>

@@ -25,43 +25,43 @@ class courses(models.Model):
         ('law','Law of India')
         ]
     )
-    test_available=fields.One2many('practice.test','sel_course')
+    test_availables=fields.One2many('practice.test','sel_course')
     courses_test=fields.Integer(compute="_test_no",string ="No of Test Available")
     color=fields.Integer()
     course_feedback=fields.Selection(
         selection=[
         ('no','No Feedback'),
-        ('exc','Excellent'),
-        ('avg','Average'),
+        ('poor','Poor'),
         ('good','Good'),
-        ('poor','Poor')
+        ('avg','Average'),
+        ('exc','Excellent')
         ], compute="_countfeedback",default='no'
     )
     course_students=fields.Many2many('student')
 
-    @api.depends('test_available')
+    @api.depends('test_availables')
     def _test_no(self):
         for record in self:
-            record.courses_test=len(record.test_available)
+            record.courses_test=len(record.test_availables)
 
 
     @api.depends('course_students')
     def _countfeedback(self):
         for i in self:
-            print('*********',i.id)
+            # print('*********',i.id)
             c_Exc=0
             c_Avg=0
             c_good=0
             c_poor=0
 
             for record in self.course_students:
-                print("========",record.course_type)
+                # print("========",record.course_type)
 
                 for rec in record.course_type:
-                    print("-------------",rec.id)
+                    # print("-------------",rec.id)
 
                     if i.id == rec.id:
-                        print("?????????????",record.priority)
+                        # print("?????????????",record.priority)
                         if record.priority == 'poor':
                             c_poor+=1
                         elif record.priority == 'good':
@@ -72,57 +72,22 @@ class courses(models.Model):
                             c_Exc+=1
 
 
+            # print("@@@@@@@@@",c_Exc,c_Avg,c_good,c_poor)
+
             if(c_Exc>=c_Avg and c_Exc>=c_good and c_Exc>=c_poor):
-                self.course_feedback='exc'
+                i.course_feedback='exc'
 
             elif(c_Avg>=c_Exc and c_Avg>=c_good and c_Avg>=c_poor):
-                self.course_feedback='avg'
+                i.course_feedback='avg'
 
             elif(c_good>=c_Exc and c_good>=c_Avg and c_good>=c_poor):
-                self.course_feedback='good'
+                i.course_feedback='good'
 
             else:
-                self.course_feedback='poor' 
+                i.course_feedback='poor' 
 
 
-        
-
-        # self.course_feedback='good'
-        return
-        
-        # c_Exc=0
-        # c_Avg=0
-        # c_good=0
-        # c_poor=0
-
-        # f or record in self:
-        #     if(record.c_st_enr.priority == 'poor'):
-        #         c_poor+=1
-
-        #     elif (record.c_st_enr.priority == 'good'):
-        #         c_good+=1
-
-        #     elif(record.c_st_enr.priority == 'avg'):
-        #         c_Avg+=1
-
-        #     else:
-        #         c_Exc+=1
-                    
-         
-        # if(c_Exc>=c_Avg and c_Exc>=c_good and c_Exc>=c_poor):
-        #     self.course_feedback='exc'
-
-        # elif(c_Avg>=c_Exc and c_Avg>=c_good and c_Avg>=c_poor):
-        #     self.course_feedback='avg'
-
-        # elif(c_good>=c_Exc and c_good>=c_Avg and c_good>=c_poor):
-        #     self.course_feedback='good'
-
-        # else:
-        #     self.course_feedback='poor'
-                
-
-
+    
 
 
 

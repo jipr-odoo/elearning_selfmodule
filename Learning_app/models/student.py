@@ -36,30 +36,9 @@ class student(models.Model):
 
     @api.depends('course_type')
     def _ctest_no(self):
-        # # for record in self.course_type:
-        #     # print("------------", self.course_type.mapped('courses_test'))
-        # print("----------------------", self)
-        for record in self.course_type:
-            self.practice_test_no+=record.courses_test
+        # print(self)
+        self.practice_test_no = sum(self.course_type.mapped('courses_test'))
     
-
-    # @api.constrains('course_type')
-    # def _countfeedback(self):
-    #     # for i in self:
-    #     #     print('*********',i.id)
-    #     for record in self.course_type:
-    #         print("{{{{{{{{{{{}}}}}}}}}}}",record)
-
-    #     for record in self.course_type:
-    #         print("====***********====",record.id)
-
-    #             # if self.course_type == record.id:
-    #             #     print("------found---------")
-    #             # for rec in record.course_type:
-    #             #     print("-------------",rec.id)
-    #             #     if i.id == rec.id:
-    #             #         print("!!!!!!!!!!!")
-                
         
     
     def paid(self):
