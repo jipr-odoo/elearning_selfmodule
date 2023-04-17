@@ -34,6 +34,26 @@ class student(models.Model):
     
     practice_test_no=fields.Integer(compute="_ctest_no", store=True)
 
+    Toatl_amount = fields.Float(compute="_totalAmount" ,store=True)
+
+    # Test_Avalilables=fields.Many2many("courses",relation="course_type.test_availables", store=True)
+
+    # @api.depends('course_type')
+    # def _TestAvailebles(self):
+    #     # for record in self.course_type.test_availables:
+    #     #     print("++++++++++++",record.name)
+    #         # self.Test_Avalilables=self.Test_Avalilables+record.name
+    #     #     self.Test_Avalilables = record.
+    #         # print("$$$$$$$$$$$$$$$$",self.course_type.test_availables)
+    #         # self.Test_Avalilables = self.mapped(record.test_availables)
+    #     print("-------------",self)
+
+
+    @api.depends('course_type')
+    def _totalAmount(self):
+        self.Toatl_amount = sum(self.course_type.mapped('course_fees'))
+
+
     @api.depends('course_type')
     def _ctest_no(self):
         # print(self)
@@ -52,6 +72,7 @@ class student(models.Model):
             print(len(record.course_type))
             if record.state!='ntpaid':
                 record.state='ntpaid'
+
                 
 
 

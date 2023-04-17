@@ -3,8 +3,7 @@
     <menuitem id ="Learning_app_root_menu" name ="Aimers">
       
       <!-- student register -->
-      <menuitem id ="Learning_app_first_level_menuu" name = "Std_Register" sequence='1'>
-        <menuitem id ="student_register_action"   action="std_register_views_action"></menuitem>
+      <menuitem id ="student_register_action" name = "Std_Register" action="std_register_views_action" sequence='1'>
       </menuitem> 
 
 
@@ -16,9 +15,9 @@
     
 
 
-      <!--Jobs  -->
-      <menuitem id="Learning_app_first_level_menu1" name="Jobs">
-        <menuitem id ="Learning_app_jobs_action"  action="jobs_views_action"></menuitem>
+      <!--Certificates  -->
+      <menuitem id="Learning_app_first_level_menu1" name="Certificate">
+        <menuitem id ="Learning_app_jobs_action"  action="certificate_views_action"></menuitem>
         <menuitem id ="Learning_app_jobs_action2"  action="applied_jobs_views_action"></menuitem>
       </menuitem>
 

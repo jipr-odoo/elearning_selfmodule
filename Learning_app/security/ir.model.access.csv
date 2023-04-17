@@ -1,9 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 Learning_app.access_courses,access_courses,Learning_app.model_courses,base.group_user,1,1,1,1
-Learning_app.access_practice_test,access_practice_test,Learning_app.model_practice_test,base.group_user,1,1,1,1
-Learning_app.access_jobs,access_jobs,Learning_app.model_jobs,base.group_user,1,1,1,1
 Learning_app.access_applied_jobs,access_applied_jobs,Learning_app.model_applied_jobs,base.group_user,1,1,1,1
 Learning_app.access_test_scores,access_test_scores,Learning_app.model_test_scores,base.group_user,1,1,1,1
 Learning_app.access_enrolled_courses,access_enrolled_courses,Learning_app.model_enrolled_courses,base.group_user,1,1,1,1
 Learning_app.access_student,access_student,Learning_app.model_student,base.group_user,1,1,1,1
 Learning_app.access_ratings_tag,access_ratings_tag,Learning_app.model_ratings_tag,base.group_user,1,1,1,1
+Learning_app.access_course_certificate,access_course_certificate,Learning_app.model_course_certificate,base.group_user,1,1,1,1

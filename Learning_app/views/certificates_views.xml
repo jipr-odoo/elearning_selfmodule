@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <record id ='certificate_views_action' model = 'ir.actions.act_window'>
+        <field name="name">Certificates</field>
+        <field name ="res_model">course.certificate</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Certificate Tree view  -->
+    <record id="Certicate_tree_view" model="ir.ui.view">
+        <field name="name">Certificate Tree view</field>
+        <field name="model">course.certificate</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="completed_course"/>
+                <field name="grade"/>
+                <field name="student_name"/>
+                <field name="completion_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Certificaye Form  view -->
+    <record id="certificate_form_view" model="ir.ui.view">
+        <field name="name">certificate Form View</field>
+        <field name="model">course.certificate</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                <sheet>
+                    <field name="certi_logo" widget="image" class="oe_avatar"/>
+                        <group>
+                            <field name="name" />
+                            <field name="completed_course"/>
+                            <field name="grade"/>
+                            <field name="student_name"/>
+                            <field name="completion_date"/>
+                        </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <record id ='applied_jobs_views_action' model = 'ir.actions.act_window'>
+        <field name="name">Jobs Applied</field>
+        <field name ="res_model">applied.jobs</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>

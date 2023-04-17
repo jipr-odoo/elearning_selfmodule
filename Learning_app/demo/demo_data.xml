@@ -1,24 +1,112 @@
 <?xml version="1.0"?>
 <odoo>
     <data>
-        <record model="ratings.tag" id="ratings_model_demo">
-            <field name="name">Excellent</field>
+        <!-- courses -->
+        <record model="courses" id="courses_model_demo">
+            <field name="name">C1</field>
             <field name="color">1</field>
+            <field name="course_duration">1</field>
+            <field name="course_fees">1000</field>
+            <field name="course_type">tech</field>
         </record>
-        <record model="ratings.tag" id="ratings_model_demo1">
-            <field name="name">Good</field>
+        <record model="courses" id="courses_model_demo1">
+            <field name="name">C2</field>
             <field name="color">2</field>
-
+            <field name="course_duration">3</field>
+            <field name="course_fees">2000</field>
+            <field name="course_type">nontech</field>
         </record>
-        <record model="ratings.tag" id="ratings_model_demo2">
-            <field name="name">Average</field>
+        <record model="courses" id="courses_model_demo2">
+            <field name="name">C3</field>
             <field name="color">3</field>
-
+            <field name="course_duration">6</field>
+            <field name="course_fees">3000</field>
+            <field name="course_type">manage</field>
         </record>
-        <record model="ratings.tag" id="ratings_model_demo3">
-            <field name="name">Poor</field>
+        <record model="courses" id="courses_model_demo3">
+            <field name="name">C4</field>
             <field name="color">4</field>
-
+            <field name="course_duration">1y</field>
+            <field name="course_fees">5000</field>
+            <field name="course_type">tech</field>
         </record>
+        <record model="courses" id="courses_model_demo4">
+            <field name="name">C5</field>
+            <field name="color">5</field>
+            <field name="course_duration">un</field>
+            <field name="course_fees">10000</field>
+            <field name="course_type">tech</field>
+        </record>
+
+        <!-- Students -->
+        <record model="student" id="student_model_demo">
+            <field name="name">student 1</field>
+            <field name="mobile_no">12345</field>
+            <field name="priority">poor</field>
+        </record>
+        <record model="student" id="student_model_demo1">
+            <field name="name">student 2</field>
+            <field name="mobile_no">1233345</field>
+            <field name="priority">good</field>
+        </record>
+        <record model="student" id="student_model_demo2">
+            <field name="name">student 3</field>
+            <field name="mobile_no">12345</field>
+            <field name="priority">good</field>
+        </record>
+        <record model="student" id="student_model_demo3">
+            <field name="name">student 4</field>
+            <field name="mobile_no">12345</field>
+            <field name="priority">avg</field>
+        </record>
+        <record model="student" id="student_model_demo4">
+            <field name="name">student 5</field>
+            <field name="mobile_no">12345</field>
+            <field name="priority">exc</field>
+        </record>
+        <record model="student" id="student_model_demo5">
+            <field name="name">student 6</field>
+            <field name="mobile_no">12345</field>
+            <field name="priority">avg</field>
+        </record>
+
+
+        <!-- Practice test -->
+        <record model="survey.survey" id="survey_survey_model_demo">
+            <field name="name">Test 1</field>
+            <field name="sel_course" ref="courses_model_demo"/>
+            <field name="title">s1</field>
+        </record>
+        <record model="survey.survey" id="survey_survey_model_demo1">
+            <field name="name">Test 2</field>
+            <field name="sel_course" ref="courses_model_demo1"/>
+            <field name="title">s2</field>
+        </record>
+        <record model="survey.survey" id="survey_survey_model_demo2">
+            <field name="name">Test 3</field>
+            <field name="sel_course" ref="courses_model_demo2"/>
+            <field name="title">s3</field>
+        </record>
+        <record model="survey.survey" id="survey_survey_model_demo3">
+            <field name="name">Test 4</field>
+            <field name="sel_course" ref="courses_model_demo3"/>
+            <field name="title">s4</field>
+        </record>
+        <record model="survey.survey" id="survey_survey_model_demo4">
+            <field name="name">Test 5</field>
+            <field name="sel_course" ref="courses_model_demo4"/>
+            <field name="title">s5</field>
+        </record>
+        <record model="survey.survey" id="survey_survey_model_demo6">
+            <field name="name">Test 6</field>
+            <field name="sel_course" ref="courses_model_demo"/>
+            <field name="title">s6</field>
+        </record>
+        <record model="survey.survey" id="survey_survey_model_demo5">
+            <field name="name">Test 7</field>
+            <field name="sel_course" ref="courses_model_demo1"/>
+            <field name="title">s7</field>
+        </record>
+
     </data>
 </odoo>

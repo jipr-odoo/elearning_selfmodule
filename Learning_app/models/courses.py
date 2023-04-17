@@ -6,9 +6,10 @@ class courses(models.Model):
     _description ='courses description'
     
     name = fields.Char()
-    course_duration=fields.Selection(
+    description = fields.Html()
+    course_duration = fields.Selection(
         selection=[
-        ('1','One Month'),
+        ('1','One Week'),
         ('3','Three Month'),
         ('6', 'Six Month'),
         ('1y','One Year'),
@@ -25,7 +26,7 @@ class courses(models.Model):
         ('law','Law of India')
         ]
     )
-    test_availables=fields.One2many('practice.test','sel_course')
+    test_availables=fields.One2many('survey.survey','sel_course',readonly=True)
     courses_test=fields.Integer(compute="_test_no",string ="No of Test Available")
     color=fields.Integer()
     course_feedback=fields.Selection(
@@ -38,6 +39,13 @@ class courses(models.Model):
         ], compute="_countfeedback",default='no'
     )
     course_students=fields.Many2many('student')
+    student_count=fields.Integer(compute="_countStudent")
+
+    @api.depends('course_students')
+    def _countStudent(self):
+        for record in self:
+            self.student_count=len(record.course_students)
+
 
     @api.depends('test_availables')
     def _test_no(self):
